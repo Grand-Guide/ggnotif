@@ -13,25 +13,24 @@ async function sendOrUpdateWebhook(webhookUrl, messageId, status, color, descrip
   });
 
   try {
-    if (messageId) {
-      await fetch(`${webhookUrl}/messages/${messageId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: body,
-      });
-    } else {
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: body,
-      });
-      const data = await response.json();
-      return data.id;
+    const response = await fetch(messageId ? `${webhookUrl}/messages/${messageId}` : webhookUrl, {
+      method: messageId ? 'PATCH' : 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: body,
+    });
+
+    // Checa o status da resposta
+    if (response.status === 204) {
+      // Nenhum corpo de resposta, mas a solicitação foi bem-sucedida
+      return null;
     }
+
+    // Se a resposta contiver um corpo, faz o parse
+    const responseBody = await response.json();
+    return responseBody.id;
+
   } catch (err) {
     console.error('Erro ao enviar notificação:', err);
   }
