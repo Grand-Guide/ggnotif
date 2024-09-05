@@ -21,3 +21,7 @@
 
 [build.failed]
   command = "npm run notify-failure"
+
+[[edge_functions]]
+function = "hello"
+path = "/test"
