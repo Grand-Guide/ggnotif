@@ -1,6 +1,9 @@
 [build]
   command = "npm run build"
 
+[build.environment]
+  DEV_NOTIFICATION = "https://<URL_DO_SEU_PROJETO_GGNOTIF>.netlify.app/.netlify/functions/send-discord-notification"
+
 [build.processing]
   command = "npm run notify-initializing"
 
