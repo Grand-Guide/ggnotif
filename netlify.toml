@@ -10,19 +10,16 @@
   # Variáveis de ambiente são configuradas diretamente no Netlify UI
 
 [build.processing]
-  command = "npm run notify-initializing"
-
-[build.deploy]
-  command = "npm run notify-building"
-
-[build.cleanup]
   command = "npm run notify-deploying"
 
-[build.post-processing]
+[build.cleanup]
   command = "npm run notify-cleanup"
 
-[build.done]
+[build.post-processing]
   command = "npm run notify-post-processing"
+
+[build.done]
+  command = "npm run notify-building"
 
 [build.failed]
   command = "npm run notify-failure"

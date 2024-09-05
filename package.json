@@ -7,9 +7,8 @@
     "notify-deploying": "curl -X POST '$DEV_NOTIFICATION?status=deploying'",
     "notify-cleanup": "curl -X POST '$DEV_NOTIFICATION?status=cleanup'",
     "notify-post-processing": "curl -X POST '$DEV_NOTIFICATION?status=post-processing'",
-    "notify-failure": "curl -X POST '$DEV_NOTIFICATION?status=failure'"
+    "notify-failure": "curl -X POST '$DEV_NOTIFICATION?status=failure'",
+    "build": "npm run notify-initializing && npm run build"
   },
-  "dependencies": {
-    "node-fetch": "^2.6.1"
-  }
+  "dependencies": {}
 }
