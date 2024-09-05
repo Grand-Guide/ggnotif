@@ -2,6 +2,7 @@
   "name": "gg-deploy-notification",
   "version": "1.0.0",
   "scripts": {
+    "build": "npm run build",
     "notify-initializing": "curl -X POST '$DEV_NOTIFICATION?status=initializing'",
     "notify-building": "curl -X POST '$DEV_NOTIFICATION?status=building'",
     "notify-deploying": "curl -X POST '$DEV_NOTIFICATION?status=deploying'",
