@@ -1,6 +1,5 @@
 const fetch = require('node-fetch');
 
-// Função para enviar ou atualizar uma mensagem no Discord
 async function sendOrUpdateWebhook(webhookUrl, messageId, status, color, description) {
   const body = JSON.stringify({
     embeds: [
@@ -15,7 +14,6 @@ async function sendOrUpdateWebhook(webhookUrl, messageId, status, color, descrip
 
   try {
     if (messageId) {
-      // Atualiza a mensagem existente
       await fetch(`${webhookUrl}/messages/${messageId}`, {
         method: 'PATCH',
         headers: {
@@ -24,7 +22,6 @@ async function sendOrUpdateWebhook(webhookUrl, messageId, status, color, descrip
         body: body,
       });
     } else {
-      // Envia uma nova mensagem
       const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
@@ -33,7 +30,7 @@ async function sendOrUpdateWebhook(webhookUrl, messageId, status, color, descrip
         body: body,
       });
       const data = await response.json();
-      return data.id; // Retorna a ID da mensagem para atualizações futuras
+      return data.id;
     }
   } catch (err) {
     console.error('Erro ao enviar notificação:', err);
@@ -48,7 +45,6 @@ exports.handler = async function(event, context) {
   let description;
   let color;
 
-  // Define o status e a cor de acordo com a etapa
   switch (status) {
     case 'initializing':
       description = 'Deploy iniciado...';
