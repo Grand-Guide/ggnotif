@@ -1,0 +1,15 @@
+{
+  "name": "gg-deploy-notification",
+  "version": "1.0.0",
+  "scripts": {
+    "notify-initializing": "curl -X POST '$DEV_NOTIFICATION?status=initializing'",
+    "notify-building": "curl -X POST '$DEV_NOTIFICATION?status=building'",
+    "notify-deploying": "curl -X POST '$DEV_NOTIFICATION?status=deploying'",
+    "notify-cleanup": "curl -X POST '$DEV_NOTIFICATION?status=cleanup'",
+    "notify-post-processing": "curl -X POST '$DEV_NOTIFICATION?status=post-processing'",
+    "notify-failure": "curl -X POST '$DEV_NOTIFICATION?status=failure'"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
