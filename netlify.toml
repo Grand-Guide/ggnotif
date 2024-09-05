@@ -1,11 +1,6 @@
 [build]
   command = "npm run build"
 
-[[plugins]]
-  package = "@netlify/plugin-run-functions"
-  [plugins.inputs]
-    functions = "netlify/functions"
-
 [build.environment]
 
 [build.processing]
